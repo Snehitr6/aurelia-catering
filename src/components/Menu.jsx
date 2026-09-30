@@ -98,33 +98,31 @@ function Menu() {
     ],
 
     Desserts: [
-  {
-    name: "Gulab Jamun",
-    description:
-      "Soft milk dumplings soaked in fragrant sugar syrup and finished with pistachios.",
-    price: "₹120",
-    image:
-      "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_600,h_600,c_fit/FOOD_CATALOG/IMAGES/CMS/2024/7/11/dc003ff7-625a-47ef-bacb-6cba0c87e3f8_51e04127-a2a8-4fd9-994f-bd56843ebff5.jpg",
-  },
-
-  {
-    name: "Traditional Sweets",
-    description:
-      "A beautiful assortment of traditional Indian mithai prepared for celebrations.",
-    price: "₹180",
-    image:
-      "https://media-assets.swiggy.com/swiggy/image/upload/f_auto,q_auto,fl_lossy/fcgiokywqeiox71zwfnt",
-  },
-
-  {
-    name: "Celebration Cake",
-    description:
-      "Beautifully finished cakes prepared specially for birthdays and celebrations.",
-    price: "₹650",
-    image:
-      "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1200&q=90",
-  },
-],
+      {
+        name: "Gulab Jamun",
+        description:
+          "Soft milk dumplings soaked in fragrant sugar syrup and finished with pistachios.",
+        price: "₹120",
+        image:
+          "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_600,h_600,c_fit/FOOD_CATALOG/IMAGES/CMS/2024/7/11/dc003ff7-625a-47ef-bacb-6cba0c87e3f8_51e04127-a2a8-4fd9-994f-bd56843ebff5.jpg",
+      },
+      {
+        name: "Traditional Sweets",
+        description:
+          "A beautiful assortment of traditional Indian mithai prepared for celebrations.",
+        price: "₹180",
+        image:
+          "https://media-assets.swiggy.com/swiggy/image/upload/f_auto,q_auto,fl_lossy/fcgiokywqeiox71zwfnt",
+      },
+      {
+        name: "Celebration Cake",
+        description:
+          "Beautifully finished cakes prepared specially for birthdays and celebrations.",
+        price: "₹650",
+        image:
+          "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1200&q=90",
+      },
+    ],
   };
 
   const dishes = menus[activeCategory];
@@ -160,15 +158,16 @@ function Menu() {
           </div>
 
           {/* ================= CATEGORY TABS ================= */}
-          <div className="mx-auto mt-10 w-full max-w-4xl overflow-hidden">
+          <div className="menu-categories-wrapper mx-auto mt-10 w-full max-w-4xl">
 
-            <div className="flex w-full border-b border-[#d8cdbd]">
+            <div className="menu-categories flex w-full items-center gap-0 overflow-x-auto border-b border-[#d8cdbd]">
 
               {categories.map((category) => (
                 <button
                   key={category}
+                  type="button"
                   onClick={() => setActiveCategory(category)}
-                  className={`relative min-w-0 flex-1 whitespace-nowrap px-1 py-4 text-[8px] font-bold uppercase tracking-[0.06em] transition sm:px-3 sm:text-[10px] sm:tracking-[0.12em] md:px-5 ${
+                  className={`menu-category-button relative shrink-0 whitespace-nowrap px-5 py-4 text-[9px] font-bold uppercase tracking-[0.10em] transition duration-300 sm:px-6 sm:text-[10px] sm:tracking-[0.12em] ${
                     activeCategory === category
                       ? "text-[#8f572e]"
                       : "text-[#8c7b6b] hover:text-[#4b382b]"
@@ -243,6 +242,7 @@ function Menu() {
                   <div className="mt-auto pt-5">
 
                     <button
+                      type="button"
                       onClick={() => setSelectedDish(dish)}
                       className="inline-flex items-center gap-2 border-b border-[#b48761] pb-1 text-[10px] font-bold uppercase tracking-[0.16em] text-[#9a5e31] transition hover:border-[#593621] hover:text-[#593621]"
                     >
@@ -291,6 +291,7 @@ function Menu() {
 
             {/* CLOSE BUTTON */}
             <button
+              type="button"
               onClick={() => setSelectedDish(null)}
               className="absolute right-3 top-3 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-white text-[#35251b] shadow-md transition hover:bg-[#6f4328] hover:text-white sm:right-4 sm:top-4 sm:h-10 sm:w-10"
               aria-label="Close"
