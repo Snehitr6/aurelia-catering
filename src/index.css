@@ -1,0 +1,1559 @@
+@import "tailwindcss";
+
+/* =========================================================
+   GLOBAL RESET
+========================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  width: 100%;
+  min-width: 0;
+
+  margin: 0;
+  padding: 0;
+
+  overflow-x: hidden;
+
+  background: #f8f5ef;
+  color: #2d2119;
+
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+
+  margin: 0;
+  padding: 0;
+
+  overflow-x: hidden;
+}
+
+/* =========================================================
+   MEDIA
+========================================================= */
+
+img,
+video,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+video {
+  max-width: none;
+}
+
+/* =========================================================
+   LINKS / BUTTONS / FORMS
+========================================================= */
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a,
+button,
+input,
+textarea,
+select {
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+button,
+nav a {
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* =========================================================
+   SELECTION
+========================================================= */
+
+::selection {
+  background: #a66a38;
+  color: #ffffff;
+}
+
+/* =========================================================
+   MAIN CONTAINER
+========================================================= */
+
+.container-main {
+  width: 100%;
+  max-width: none;
+
+  margin: 0;
+
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+@media (max-width: 639px) {
+  .container-main {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+@media (min-width: 640px) {
+  .container-main {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container-main {
+    padding-left: 26px;
+    padding-right: 26px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-main {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container-main {
+    padding-left: 34px;
+    padding-right: 34px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .container-main {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .container-main {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+}
+
+/* =========================================================
+   SECTIONS
+========================================================= */
+
+section {
+  width: 100%;
+  scroll-margin-top: 80px;
+}
+
+/* =========================================================
+   SECTION LABEL
+========================================================= */
+
+.section-label {
+  color: #a66a38;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  line-height: 1.4;
+
+  letter-spacing: 0.22em;
+
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   SECTION TITLE
+========================================================= */
+
+.section-title {
+  color: #35251b;
+
+  font-size: clamp(2.2rem, 5vw, 4.2rem);
+
+  font-weight: 800;
+
+  line-height: 0.98;
+
+  letter-spacing: -0.045em;
+}
+
+/* =========================================================
+   GOLD LINE
+========================================================= */
+
+.gold-line {
+  width: 55px;
+  height: 2px;
+
+  background: #b27a45;
+}
+
+/* =========================================================
+   HERO VIDEO
+========================================================= */
+
+.hero-video {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  pointer-events: none;
+}
+
+/* =========================================================
+   FOCUS
+========================================================= */
+
+:focus-visible {
+  outline: 2px solid #b27a45;
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   =========================================================
+   AURELIA FIXED NAVBAR
+   =========================================================
+========================================================= */
+
+.aurelia-navbar {
+  position: fixed !important;
+
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+
+  width: 100% !important;
+
+  height: 76px;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  z-index: 99999 !important;
+
+  background: rgba(18, 12, 8, 0.94);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  /* Keep the navbar attached to the browser viewport.
+     Do not transform this fixed element. */
+  will-change: auto;
+}
+
+/* =========================================================
+   NAVBAR INNER
+
+   IMPORTANT:
+   This matches Navbar.jsx:
+   aurelia-navbar-inner
+========================================================= */
+
+.aurelia-navbar-inner {
+  position: relative;
+
+  width: 100%;
+  height: 76px;
+
+  margin: 0;
+  padding: 0 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 30px;
+}
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.aurelia-logo {
+  position: relative;
+
+  z-index: 2;
+
+  flex-shrink: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: flex-start;
+  justify-content: center;
+
+  line-height: 1;
+}
+
+.aurelia-logo-name {
+  color: #f7eee4;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 25px;
+
+  font-weight: 400;
+
+  letter-spacing: 0.04em;
+}
+
+.aurelia-logo-subtitle {
+  margin-top: 5px;
+
+  color: #d3a06c;
+
+  font-size: 6px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.32em;
+}
+
+/* =========================================================
+   DESKTOP NAVIGATION
+========================================================= */
+
+.aurelia-desktop-nav {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 30px;
+
+  margin-left: auto;
+}
+
+.aurelia-desktop-nav a {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  height: 76px;
+
+  color: rgba(255, 255, 255, 0.72);
+
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: 0.13em;
+
+  text-transform: uppercase;
+}
+
+.aurelia-desktop-nav a::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: 20px;
+
+  width: 0;
+  height: 1px;
+
+  background: #d2a06b;
+
+  transition: width 0.3s ease;
+}
+
+.aurelia-desktop-nav a:hover {
+  color: #ffffff;
+}
+
+.aurelia-desktop-nav a:hover::after {
+  width: 100%;
+}
+
+/* =========================================================
+   BOOK EVENT BUTTON
+========================================================= */
+
+.aurelia-book-button {
+  flex-shrink: 0;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  min-height: 40px;
+
+  padding: 0 17px;
+
+  background: #b97d49;
+
+  color: #ffffff;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.11em;
+
+  text-transform: uppercase;
+}
+
+.aurelia-book-button:hover {
+  background: #d09a65;
+
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   MOBILE BUTTON
+========================================================= */
+
+.aurelia-mobile-button {
+  display: none;
+
+  width: 42px;
+  height: 42px;
+
+  flex-shrink: 0;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: 1px solid rgba(255, 255, 255, 0.20);
+
+  background: rgba(0, 0, 0, 0.18);
+
+  color: #ffffff;
+}
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+.aurelia-mobile-menu {
+  position: absolute;
+
+  top: 76px;
+  left: 0;
+  right: 0;
+
+  width: 100%;
+
+  max-height: 0;
+
+  overflow: hidden;
+
+  opacity: 0;
+
+  background: rgba(18, 12, 8, 0.98);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  transition:
+    max-height 0.4s ease,
+    opacity 0.3s ease;
+}
+
+.aurelia-mobile-menu-open {
+  max-height: 600px;
+
+  opacity: 1;
+}
+
+.aurelia-mobile-menu nav {
+  display: flex;
+
+  flex-direction: column;
+
+  padding: 10px 18px 22px;
+}
+
+.aurelia-mobile-menu nav a {
+  display: flex;
+
+  align-items: center;
+
+  min-height: 48px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+  color: rgba(255, 255, 255, 0.78);
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.16em;
+
+  text-transform: uppercase;
+}
+
+.aurelia-mobile-menu nav a:hover {
+  color: #d6a16b;
+
+  padding-left: 5px;
+}
+
+.aurelia-mobile-menu .aurelia-mobile-book {
+  justify-content: center;
+
+  gap: 9px;
+
+  margin-top: 15px;
+
+  border: 0;
+
+  background: #b97d49;
+
+  color: #ffffff;
+
+  padding: 0 20px;
+}
+
+.aurelia-mobile-menu .aurelia-mobile-book:hover {
+  padding-left: 20px;
+
+  background: #d09a65;
+
+  color: #ffffff;
+}
+
+/* =========================================================
+   TABLET NAVBAR
+========================================================= */
+
+@media (max-width: 1024px) {
+  .aurelia-navbar-inner {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .aurelia-desktop-nav {
+    gap: 20px;
+  }
+
+  .aurelia-desktop-nav a {
+    font-size: 9px;
+  }
+}
+
+/* =========================================================
+   MOBILE NAVBAR
+========================================================= */
+
+@media (max-width: 768px) {
+  .aurelia-navbar {
+    height: 68px;
+  }
+
+  .aurelia-navbar-inner {
+    height: 68px;
+
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .aurelia-logo-name {
+    font-size: 22px;
+  }
+
+  .aurelia-logo-subtitle {
+    font-size: 5px;
+
+    letter-spacing: 0.28em;
+  }
+
+  .aurelia-desktop-nav,
+  .aurelia-book-button {
+    display: none;
+  }
+
+  .aurelia-mobile-button {
+    display: flex;
+  }
+
+  .aurelia-mobile-menu {
+    top: 68px;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+  .aurelia-navbar-inner {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+}
+
+/* =========================================================
+   WEBSITE WRAPPER
+   IMPORTANT:
+   Never transform this parent.
+   A transformed ancestor can change how position: fixed
+   descendants are positioned.
+   ========================================================= */
+
+.website-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  opacity: 1;
+  visibility: visible;
+}
+
+.website-wrapper--hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.website-wrapper--visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  animation: websiteReveal 0.7s ease forwards;
+}
+
+@keyframes websiteReveal {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* =========================================================
+   EXTRA FIX FOR THE AURELIA NAVBAR
+   ========================================================= */
+
+.aurelia-navbar {
+  position: fixed !important;
+  inset: 0 0 auto 0 !important;
+  width: 100vw !important;
+  max-width: 100vw !important;
+  height: 76px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  z-index: 999999 !important;
+
+  /* No transform here. */
+  transform: none !important;
+
+  isolation: isolate;
+}
+
+.aurelia-navbar > .container-main {
+  width: 100% !important;
+  max-width: none !important;
+  height: 76px !important;
+  margin: 0 !important;
+}
+
+@media (max-width: 768px) {
+  .aurelia-navbar {
+    height: 68px !important;
+  }
+
+  .aurelia-navbar > .container-main {
+    height: 68px !important;
+  }
+}
+
+/* =========================================================
+   =========================================================
+   CATERING FOOD PRELOADER
+   =========================================================
+========================================================= */
+
+.catering-loader {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 999999;
+
+  width: 100%;
+  height: 100dvh;
+
+  overflow: hidden;
+
+  background: #110b07;
+
+  color: #ffffff;
+
+  isolation: isolate;
+}
+
+/* =========================================================
+   VIDEO
+========================================================= */
+
+.catering-loader__video {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  transform: scale(1.08);
+
+  animation:
+    cateringVideoZoom
+    7s
+    ease-out
+    forwards;
+}
+
+@keyframes cateringVideoZoom {
+  from {
+    transform: scale(1.08);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+/* =========================================================
+   DARK VIDEO OVERLAY
+========================================================= */
+
+.catering-loader__dark {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 1;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(13, 8, 5, 0.82) 0%,
+      rgba(20, 12, 7, 0.58) 45%,
+      rgba(13, 8, 5, 0.72) 100%
+    );
+}
+
+/* =========================================================
+   VIGNETTE
+========================================================= */
+
+.catering-loader__vignette {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 2;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      transparent 20%,
+      rgba(5, 3, 2, 0.8) 100%
+    );
+}
+
+/* =========================================================
+   WARM LIGHT
+========================================================= */
+
+.catering-loader__light {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 550px;
+  height: 550px;
+
+  z-index: 2;
+
+  border-radius: 50%;
+
+  background: rgba(205, 137, 72, 0.13);
+
+  filter: blur(90px);
+
+  transform:
+    translate(-50%, -50%);
+
+  animation:
+    loaderLight
+    4s
+    ease-in-out
+    infinite
+    alternate;
+}
+
+@keyframes loaderLight {
+  from {
+    transform:
+      translate(-50%, -50%)
+      scale(0.8);
+
+    opacity: 0.45;
+  }
+
+  to {
+    transform:
+      translate(-50%, -50%)
+      scale(1.15);
+
+    opacity: 0.9;
+  }
+}
+
+/* =========================================================
+   STEAM
+========================================================= */
+
+.steam {
+  position: absolute;
+
+  bottom: 10%;
+
+  z-index: 3;
+
+  width: 80px;
+  height: 240px;
+
+  border-radius: 50%;
+
+  border-left:
+    2px solid
+    rgba(255, 245, 228, 0.12);
+
+  filter: blur(3px);
+
+  opacity: 0;
+
+  animation:
+    steamRise
+    4s
+    ease-in-out
+    infinite;
+}
+
+.steam-1 {
+  left: 18%;
+
+  animation-delay: 0s;
+}
+
+.steam-2 {
+  left: 50%;
+
+  animation-delay: 1.1s;
+}
+
+.steam-3 {
+  right: 18%;
+
+  animation-delay: 2.1s;
+}
+
+@keyframes steamRise {
+  0% {
+    opacity: 0;
+
+    transform:
+      translateY(80px)
+      rotate(-8deg)
+      scale(0.8);
+  }
+
+  25% {
+    opacity: 0.35;
+  }
+
+  70% {
+    opacity: 0.15;
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      translateY(-230px)
+      rotate(12deg)
+      scale(1.25);
+  }
+}
+
+/* =========================================================
+   PRELOADER CONTENT
+========================================================= */
+
+.catering-loader__content {
+  position: relative;
+
+  z-index: 10;
+
+  width: min(90%, 700px);
+  height: 100%;
+
+  margin: auto;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+}
+
+/* =========================================================
+   TOP LABEL
+========================================================= */
+
+.catering-loader__top {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 14px;
+
+  margin-bottom: 26px;
+
+  opacity: 0;
+
+  animation:
+    cateringFadeUp
+    0.9s
+    0.2s
+    cubic-bezier(0.16, 1, 0.3, 1)
+    forwards;
+}
+
+.catering-loader__top span {
+  width: 35px;
+  height: 1px;
+
+  background: #d5a36e;
+}
+
+.catering-loader__top p {
+  margin: 0;
+
+  color: #e1b582;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.27em;
+}
+
+/* =========================================================
+   MESSAGE
+========================================================= */
+
+.catering-loader__message {
+  overflow: hidden;
+}
+
+.message-small {
+  margin: 0;
+
+  color: rgba(255, 255, 255, 0.65);
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.34em;
+
+  opacity: 0;
+
+  animation:
+    cateringFadeUp
+    0.8s
+    0.45s
+    forwards;
+}
+
+.catering-loader__message h1 {
+  margin: 12px 0 0;
+
+  color: #fff7ed;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:
+    clamp(
+      3.3rem,
+      8vw,
+      6.8rem
+    );
+
+  font-weight: 400;
+
+  line-height: 0.92;
+
+  letter-spacing: -0.05em;
+
+  opacity: 0;
+
+  transform:
+    translateY(50px);
+
+  animation:
+    cateringTitleReveal
+    1.1s
+    0.55s
+    cubic-bezier(0.16, 1, 0.3, 1)
+    forwards;
+}
+
+.catering-loader__message h1 em {
+  color: #d9a56c;
+
+  font-style: italic;
+}
+
+/* =========================================================
+   MESSAGE LINE
+========================================================= */
+
+.message-line {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 14px;
+
+  width: min(300px, 70%);
+
+  margin: 26px auto 22px;
+
+  opacity: 0;
+
+  animation:
+    cateringFadeUp
+    0.8s
+    0.95s
+    forwards;
+}
+
+.message-line span {
+  flex: 1;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(217, 165, 108, 0.9)
+    );
+}
+
+.message-line span:last-child {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(217, 165, 108, 0.9),
+      transparent
+    );
+}
+
+.message-line i {
+  color: #d5a36e;
+
+  font-size: 13px;
+
+  font-style: normal;
+}
+
+/* =========================================================
+   PRELOADER BRAND
+========================================================= */
+
+.catering-loader__brand {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  margin-top: 25px;
+
+  opacity: 0;
+
+  transform:
+    translateY(20px);
+
+  animation:
+    cateringFadeUp
+    0.9s
+    1.15s
+    forwards;
+}
+
+.catering-loader__brand span {
+  color: #f7eadc;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:
+    clamp(
+      2rem,
+      5vw,
+      3.5rem
+    );
+
+  line-height: 1;
+
+  letter-spacing: -0.04em;
+}
+
+.catering-loader__brand small {
+  margin-top: 7px;
+
+  color: #d2a16e;
+
+  font-size: 8px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.42em;
+}
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.catering-loader__loading {
+  width: min(380px, 75%);
+
+  margin-top: 34px;
+
+  opacity: 0;
+
+  animation:
+    cateringFadeUp
+    0.8s
+    1.35s
+    forwards;
+}
+
+.loading-top {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-bottom: 9px;
+}
+
+.loading-top span {
+  color: rgba(255, 255, 255, 0.46);
+
+  font-size: 8px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.18em;
+}
+
+.loading-top strong {
+  color: #d8a36b;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  font-variant-numeric: tabular-nums;
+}
+
+.loading-bar {
+  width: 100%;
+  height: 2px;
+
+  overflow: hidden;
+
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.loading-bar div {
+  height: 100%;
+
+  background:
+    linear-gradient(
+      90deg,
+      #8f572d,
+      #d5a06a,
+      #efc08e
+    );
+
+  box-shadow:
+    0 0 14px
+    rgba(218, 164, 105, 0.65);
+
+  transition:
+    width 0.08s linear;
+}
+
+/* =========================================================
+   PRELOADER BOTTOM
+========================================================= */
+
+.catering-loader__bottom {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 28px;
+
+  z-index: 10;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 14px;
+
+  color: rgba(255, 255, 255, 0.35);
+
+  font-size: 7px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.2em;
+
+  opacity: 0;
+
+  animation:
+    cateringFadeUp
+    0.8s
+    1.5s
+    forwards;
+}
+
+.catering-loader__bottom b {
+  color: #c28c59;
+
+  font-size: 11px;
+}
+
+/* =========================================================
+   EXIT CURTAINS
+========================================================= */
+
+.loader-curtain {
+  position: absolute;
+
+  top: 0;
+
+  width: 50%;
+  height: 100%;
+
+  z-index: 20;
+
+  background: #120c08;
+
+  transition:
+    transform
+    1.05s
+    cubic-bezier(0.77, 0, 0.18, 1);
+}
+
+.loader-curtain-left {
+  left: 0;
+
+  transform:
+    translateX(-100%);
+}
+
+.loader-curtain-right {
+  right: 0;
+
+  transform:
+    translateX(100%);
+}
+
+/* =========================================================
+   PRELOADER EXIT
+========================================================= */
+
+.catering-loader--exit
+  .loader-curtain-left {
+  transform:
+    translateX(0);
+}
+
+.catering-loader--exit
+  .loader-curtain-right {
+  transform:
+    translateX(0);
+}
+
+.catering-loader--exit
+  .catering-loader__content,
+.catering-loader--exit
+  .catering-loader__bottom {
+  opacity: 0;
+
+  transform:
+    scale(1.05);
+
+  transition:
+    opacity 0.4s ease,
+    transform 0.8s ease;
+}
+
+/* =========================================================
+   PRELOADER ANIMATIONS
+========================================================= */
+
+@keyframes cateringFadeUp {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+}
+
+@keyframes cateringTitleReveal {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(50px)
+      scale(0.97);
+
+    filter: blur(8px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+
+    filter: blur(0);
+  }
+}
+
+/* =========================================================
+   MOBILE CATERING PRELOADER
+========================================================= */
+
+@media (max-width: 640px) {
+  .catering-loader__video {
+    object-position: 55% center;
+  }
+
+  .catering-loader__dark {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(10, 6, 4, 0.68),
+        rgba(14, 8, 5, 0.78)
+      );
+  }
+
+  .catering-loader__top {
+    gap: 8px;
+
+    margin-bottom: 22px;
+  }
+
+  .catering-loader__top span {
+    width: 20px;
+  }
+
+  .catering-loader__top p {
+    font-size: 7px;
+
+    letter-spacing: 0.19em;
+  }
+
+  .catering-loader__message h1 {
+    font-size:
+      clamp(
+        3rem,
+        15vw,
+        4.7rem
+      );
+  }
+
+  .message-small {
+    font-size: 7px;
+
+    letter-spacing: 0.25em;
+  }
+
+  .message-line {
+    width: 65%;
+
+    margin:
+      20px auto;
+  }
+
+  .catering-loader__brand span {
+    font-size: 2.1rem;
+  }
+
+  .catering-loader__brand small {
+    font-size: 6px;
+
+    letter-spacing: 0.32em;
+  }
+
+  .catering-loader__loading {
+    width: 78%;
+
+    margin-top: 28px;
+  }
+
+  .loading-top span {
+    font-size: 6px;
+  }
+
+  .catering-loader__bottom {
+    bottom: 20px;
+
+    padding: 0 15px;
+
+    gap: 8px;
+
+    font-size: 5.5px;
+
+    text-align: center;
+  }
+
+  .steam {
+    display: none;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+
+    animation-iteration-count: 1 !important;
+
+    transition-duration: 0.01ms !important;
+  }
+}
