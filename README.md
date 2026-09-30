@@ -1,4 +1,4 @@
-# 🍽️ Savoria Catering Website
+# 🍽️ Aurelia Catering Website
 
 A modern, responsive catering website UI built with **React.js, Vite, and Tailwind CSS**. The website is designed to provide a premium catering experience with elegant visuals, smooth animations, responsive layouts, and interactive sections.
 
