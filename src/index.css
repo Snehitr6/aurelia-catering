@@ -1557,3 +1557,34 @@ section {
     transition-duration: 0.01ms !important;
   }
 }
+/* =========================================================
+   MOBILE HERO VIDEO — HIDE ALL VIDEO CONTROLS
+   ========================================================= */
+
+.hero-video,
+.hero-video::-webkit-media-controls,
+.hero-video::-webkit-media-controls-panel,
+.hero-video::-webkit-media-controls-play-button,
+.hero-video::-webkit-media-controls-start-playback-button,
+.hero-video::-webkit-media-controls-timeline,
+.hero-video::-webkit-media-controls-current-time-display,
+.hero-video::-webkit-media-controls-time-remaining-display,
+.hero-video::-webkit-media-controls-mute-button,
+.hero-video::-webkit-media-controls-volume-slider,
+.hero-video::-webkit-media-controls-fullscreen-button {
+  pointer-events: none !important;
+}
+
+/* Prevent accidental native video interaction */
+video[controls] {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Mobile video must stay behind every Hero element */
+@media (max-width: 768px) {
+  .hero-video {
+    z-index: 0 !important;
+    pointer-events: none !important;
+  }
+}
